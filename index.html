@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PreRank AI — Research. Rank. Rise. | YouTube SEO, Research & Thumbnail Tool</title>
+<meta name="description" content="PreRank AI scores your YouTube video idea before you film it — keyword research, competitor gaps, SEO titles, tags and AI thumbnails.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="icon.webp">
+<style>
+:root{--bg:#070b24;--bg2:#0b1030;--panel:#10163a;--line:#232b5e;--line2:#2d377a;--txt:#f2f4ff;--mut:#a6add2;--mut2:#7e86b3;--grn:#22e584;--amber:#ffc94d;--red:#ff7186;--r:14px;--sh:0 18px 50px rgba(2,4,18,.55)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+h1,h2,h3,.brand{font-family:'Sora','Inter',sans-serif}
+a{color:inherit;text-decoration:none;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:60;background:rgba(7,11,36,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:30px;height:68px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px}
+.brand img{width:38px;height:38px;border-radius:10px}
+.brand em{font-style:normal;color:var(--grn)}
+.nav-links{display:flex;gap:26px;font-size:14.5px;font-weight:500;color:var(--mut)}
+.nav-links a:hover{color:#fff}
+.nav-cta{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:14.5px;padding:10px 20px;border-radius:10px;border:1px solid transparent;cursor:pointer;background:var(--panel);color:var(--txt);transition:.15s}
+.btn-pri{background:var(--grn);color:#03130a}.btn-pri:hover{background:#3bf095}
+.btn-ghost{background:transparent;border-color:var(--line2)}.btn-ghost:hover{border-color:var(--grn);color:var(--grn)}
+.btn-sm{padding:7px 13px;font-size:13px;border-radius:8px}
+.btn-lg{padding:14px 26px;font-size:15.5px;border-radius:12px}
+.btn-danger{border-color:#5e2333;color:var(--red);background:transparent}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+#announce{display:none;background:var(--grn);color:#03130a;text-align:center;font-weight:600;font-size:14px;padding:9px 16px}
+.hero{padding:80px 0 66px;background:radial-gradient(900px 480px at 85% -10%,rgba(34,229,132,.13),transparent 60%),radial-gradient(700px 420px at 0% 0%,rgba(64,86,255,.14),transparent 55%),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:52px;align-items:center}
+.kicker{display:inline-flex;font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grn);background:rgba(34,229,132,.09);border:1px solid rgba(34,229,132,.35);padding:6px 14px;border-radius:30px;margin-bottom:22px}
+.hero h1{font-size:50px;line-height:1.08;letter-spacing:-1.2px;font-weight:800}
+.hero h1 .hl{color:var(--grn)}
+.hero .sub{margin:22px 0 28px;font-size:17.5px;color:var(--mut);max-width:520px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-points{margin-top:28px;display:flex;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--mut)}
+.tick{color:var(--grn);font-weight:700}
+.frame{background:var(--panel);border:1px solid var(--line2);border-radius:18px;box-shadow:var(--sh);overflow:hidden}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.dot{width:11px;height:11px;border-radius:50%}
+.frame-url{margin-left:10px;flex:1;background:var(--panel);border:1px solid var(--line);color:var(--mut2);font-size:12px;padding:5px 12px;border-radius:8px}
+.frame-body{padding:20px}
+.gauge{width:86px;height:86px;border-radius:50%;background:conic-gradient(var(--grn) 78%,#232a5e 0);display:flex;align-items:center;justify-content:center;flex:none}
+.gauge div{width:66px;height:66px;border-radius:50%;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.gauge b{font-size:21px;color:var(--grn);line-height:1}.gauge small{font-size:8.5px;letter-spacing:.08em;color:var(--mut2)}
+section.blk{padding:74px 0}
+.sec-head{max-width:640px;margin-bottom:42px}
+.sec-head h2{font-size:35px;letter-spacing:-.8px;line-height:1.15}
+.sec-head p{color:var(--mut);margin-top:12px;font-size:16.5px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.feat .ic{width:46px;height:46px;border-radius:12px;background:rgba(34,229,132,.1);border:1px solid rgba(34,229,132,.3);display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:20px}
+.feat h3{font-size:17px;margin-bottom:8px}.feat p{font-size:14px;color:var(--mut)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{padding:26px;border:1px dashed var(--line2);border-radius:var(--r)}
+.step b{font-family:'Sora';font-size:30px;color:var(--grn)}
+.step h3{margin:10px 0 6px;font-size:16.5px}.step p{font-size:14px;color:var(--mut)}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.price{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;flex-direction:column}
+.price.pop{border-color:var(--grn);box-shadow:0 0 0 1px var(--grn),var(--sh);position:relative}
+.price.pop::before{content:"MOST POPULAR";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grn);color:#03130a;font-size:11px;font-weight:800;letter-spacing:.08em;padding:5px 14px;border-radius:20px}
+.price .amt{font-family:'Sora';font-size:42px;font-weight:800;margin:14px 0 2px}
+.price .amt small{font-size:15px;color:var(--mut);font-weight:500}
+.price ul{list-style:none;margin:20px 0 26px;display:grid;gap:11px;font-size:14px;color:var(--mut)}
+.price ul li::before{content:"✓";color:var(--grn);font-weight:800;margin-right:9px}
+.price .btn{margin-top:auto}
+.faq details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px}
+.faq summary{font-weight:600;cursor:pointer;font-size:15.5px}
+.faq p{color:var(--mut);font-size:14.5px;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:44px 0 34px;background:var(--bg2)}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.foot p{color:var(--mut2);font-size:13px;max-width:340px;margin-top:10px}
+.foot h5{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:13px}
+.foot li{list-style:none;font-size:14px;color:var(--mut);margin-bottom:9px}
+.copyright{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+/* modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(3,5,16,.75);z-index:100;align-items:center;justify-content:center;padding:18px}
+.modal.open{display:flex}
+.modal-box{background:var(--panel);border:1px solid var(--line2);border-radius:18px;padding:30px;width:100%;max-width:420px;box-shadow:var(--sh)}
+.modal-box h3{font-size:21px;margin-bottom:6px}
+.modal-box .sub{color:var(--mut);font-size:14px;margin-bottom:8px}
+.f-label{display:block;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--mut);text-transform:uppercase;margin:15px 0 7px}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--line2);color:var(--txt);border-radius:11px;padding:12px 13px;font-size:14.5px;font-family:'Inter'}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(34,229,132,.5);border-color:var(--grn)}
+textarea{min-height:74px;resize:vertical}
+.err{display:none;background:rgba(255,113,134,.12);border:1px solid rgba(255,113,134,.4);color:#ffb3c0;font-size:13.5px;padding:10px 13px;border-radius:10px;margin-top:14px}
+.x{float:right;background:none;border:none;color:var(--mut);font-size:22px;cursor:pointer}
+/* app */
+#appView{display:none}
+.app-shell{background:var(--bg2);border-top:1px solid var(--line);display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px)}
+.side{border-right:1px solid var(--line);padding:20px 14px;background:#0a0f2e}
+.s-item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:500;color:var(--mut);cursor:pointer;margin-bottom:4px;border:1px solid transparent}
+.s-item:hover{color:#fff;background:var(--panel)}
+.s-item.on{background:rgba(34,229,132,.1);color:var(--grn);border-color:rgba(34,229,132,.3)}
+.s-sec{font-size:11px;letter-spacing:.1em;color:var(--mut2);text-transform:uppercase;padding:16px 12px 8px}
+.plan-box{margin:16px 4px 0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:12.5px;color:var(--mut)}
+.plan-box b{color:#fff;display:block;font-size:13.5px;margin-bottom:4px}
+.plan-box .bar{height:6px;background:#232a5e;border-radius:4px;margin:10px 0 6px}.plan-box .bar i{display:block;height:100%;background:var(--grn);border-radius:4px}
+.main{padding:28px 30px 40px;min-width:0}
+.main h2{font-size:23px;letter-spacing:-.4px}
+.main .lede{color:var(--mut);font-size:14.5px;margin:6px 0 18px}
+.view{display:none}.view.on{display:block}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:22px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.stat b{font-family:'Sora';font-size:30px;display:block}
+.stat span{font-size:13px;color:var(--mut)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+.panel h3{font-size:16px;margin-bottom:10px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut2);text-align:left;padding:9px 7px;border-bottom:1px solid var(--line2)}
+td{padding:10px 7px;border-bottom:1px solid var(--line);color:#dfe3ff;vertical-align:top}
+.pill{display:inline-block;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700}
+.p-hi{background:rgba(34,229,132,.13);color:#4be38d}.p-md{background:rgba(255,201,77,.13);color:var(--amber)}.p-lo{background:rgba(255,113,134,.13);color:var(--red)}
+.gauge-lg{width:116px;height:116px}.gauge-lg div{width:92px;height:92px}.gauge-lg b{font-size:29px}.gauge-lg small{font-size:9px}
+.tabs{display:flex;gap:8px;margin:22px 0 6px;flex-wrap:wrap}
+.tab{padding:9px 17px;border-radius:30px;border:1px solid var(--line2);background:var(--panel);font-size:13.5px;font-weight:600;color:var(--mut);cursor:pointer}
+.tab.on{background:var(--grn);color:#03130a;border-color:var(--grn)}
+.tpane{display:none;padding-top:14px}.tpane.on{display:block}
+.t-list{list-style:none;display:grid;gap:10px}
+.t-list li{background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:13px 15px;display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:14px}
+.t-scores{flex:none;font-size:12.5px;color:var(--mut);text-align:right}.t-scores b{color:var(--grn)}
+.seo-box{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px;font-size:13.5px;line-height:1.7;white-space:pre-wrap;color:#dfe3ff;margin-bottom:12px}
+.thumb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.tcard{background:var(--bg2);border:1px solid var(--line);border-radius:13px;overflow:hidden}
+.tcard img{aspect-ratio:16/9;object-fit:cover;width:100%;background:#232a5e}
+.tcard .tb{padding:13px 15px}.tcard .tb b{font-size:14.5px}
+.ctr{float:right;color:var(--grn);font-weight:800}
+.tcard p{font-size:12.5px;color:var(--mut);margin-top:5px}
+.plain-list{margin-left:18px;color:#dfe3ff;font-size:14.5px;line-height:1.75}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.feed-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.fcard h4{font-size:15px;line-height:1.4;margin-bottom:8px}
+.fcard .meta{font-size:12.5px;color:var(--mut);display:grid;gap:3px;margin-bottom:12px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--grn);color:#03130a;font-weight:700;padding:12px 22px;border-radius:12px;display:none;z-index:200;box-shadow:var(--sh)}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid rgba(3,19,10,.3);border-top-color:#03130a;border-radius:50%;animation:sp 1s linear infinite;vertical-align:-3px}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media(max-width:960px){.hero-grid,.feat-grid,.steps,.price-grid,.grid2{grid-template-columns:1fr}.hero h1{font-size:36px}.app-shell{grid-template-columns:1fr}.side{display:none}.nav-links{display:none}.main{padding:20px 16px}}
+</style>
+</head>
+<body>
+<div id="announce"></div>
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" onclick="goHome()"><img src="icon.webp" alt="PreRank AI logo">PreRank <em>AI</em></a>
+    <div class="nav-links" id="landLinks">
+      <a href="#features">Features</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta" id="navAnon">
+      <button class="btn btn-ghost" onclick="openAuth('signin')">Sign in</button>
+      <button class="btn btn-pri" onclick="openAuth('signup')">Get started free</button>
+    </div>
+    <div class="nav-cta" id="navUser" style="display:none">
+      <span id="navUserName" style="font-size:14px;color:var(--mut)"></span>
+      <button class="btn btn-ghost" onclick="showApp('home')">Dashboard</button>
+      <button class="btn btn-pri" onclick="signOut()">Sign out</button>
+    </div>
+  </div>
+</nav>
+
+<div id="landing">
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">● Research. Rank. Rise.</span>
+      <h1>Know if your video will rank — <span class="hl">before you film it.</span></h1>
+      <p class="sub">PreRank AI turns a raw video idea into a complete launch package: keyword research with real demand signals, competitor gaps, SEO titles, a full description &amp; tag pack, and AI thumbnails designed to get clicked.</p>
+      <div class="hero-cta">
+        <button class="btn btn-pri btn-lg" onclick="openAuth('signup')">Score my idea — free</button>
+        <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
+      </div>
+      <div class="hero-points">
+        <span><span class="tick">✓</span> No credit card required</span>
+        <span><span class="tick">✓</span> 3 free reports every month</span>
+        <span><span class="tick">✓</span> AI thumbnail generator included</span>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="frame-bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="frame-url">app.prerankai.com/report/rainbow-lost-its-colors</span></div>
+      <div class="frame-body">
+        <div style="display:flex;justify-content:space-between;gap:14px;align-items:flex-start">
+          <div><h4 style="font-size:15.5px">The Rainbow Lost Its Colors! 🌈 | Bedtime Story for Kids</h4><p style="font-size:12.5px;color:var(--mut2);margin-top:3px">Niche: Kids bedtime stories · Keyword: “rainbow story for kids”</p></div>
+          <div class="gauge"><div><b>78</b><small>IDEA SCORE</small></div></div>
+        </div>
+        <div style="margin-top:16px;display:grid;gap:9px;font-size:12.5px">
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--mut)">rainbow story for kids</span><span class="pill p-hi">High opportunity</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--mut)">bedtime story for kids in english</span><span class="pill p-md">Medium</span></div>
+          <div style="display:flex;justify-content:space-between"><span style="color:var(--mut)">learn colors for kids</span><span class="pill p-lo">Very competitive</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="blk" id="features">
+  <div class="wrap">
+    <div class="sec-head"><h2>Everything a video needs to rank, in one report</h2><p>Most creators guess. PreRank checks the data first — then writes the package for you.</p></div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic">📊</div><h3>Idea Score 0–100</h3><p>A single verdict before you spend hours filming — demand, competition and evergreen value in one number.</p></div>
+      <div class="feat"><div class="ic">🔍</div><h3>Keyword Research</h3><p>Related keywords with estimated volume, competition and an opportunity score for each.</p></div>
+      <div class="feat"><div class="ic">🏆</div><h3>Competitor Gaps</h3><p>See who owns your keyword and the exact angle a smaller channel can win.</p></div>
+      <div class="feat"><div class="ic">✍️</div><h3>Titles That Get Clicked</h3><p>10–12 title options scored for SEO strength and predicted click-through.</p></div>
+      <div class="feat"><div class="ic">🖼️</div><h3>AI Thumbnails + CTR Score</h3><p>Original AI-generated thumbnails — auto-built from your report or from your own detailed prompt.</p></div>
+      <div class="feat"><div class="ic">🎬</div><h3>Hook, Outline & Shorts</h3><p>A first-30-seconds hook script, a retention-ready outline, and three Shorts ideas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="how" style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head"><h2>From idea to upload-ready in three steps</h2></div>
+    <div class="steps">
+      <div class="step"><b>01</b><h3>Describe your idea</h3><p>One or two sentences is enough. Add your niche and channel size so the scoring fits where you actually are.</p></div>
+      <div class="step"><b>02</b><h3>PreRank researches it</h3><p>Demand signals, competitor videos and keyword patterns — combined into one transparent score.</p></div>
+      <div class="step"><b>03</b><h3>Copy the launch package</h3><p>Title, description, tags, hashtags, thumbnails and a hook script — ready to paste into YouTube Studio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="blk" id="pricing" style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head"><h2>Simple pricing that pays for itself</h2><p>One video that ranks can return the cost of a year of Pro. Start free.</p></div>
+    <div class="price-grid" id="priceGrid"></div>
+    <p style="color:var(--mut2);font-size:12.5px;margin-top:16px">Payments currently run in <b>test mode</b> — no real charge is made. Live payments activate when Stripe is connected.</p>
+  </div>
+</section>
+
+<section class="blk faq" id="faq" style="padding-top:10px">
+  <div class="wrap">
+    <div class="sec-head"><h2>Frequently asked questions</h2></div>
+    <details><summary>How does the Idea Score work?</summary><p>PreRank estimates demand, competition and evergreen value for your topic and niche, then combines them into one 0–100 score with a GO / PROMISING / RISKY verdict. Scores are PreRank's own transparent estimates, clearly labelled — not copied from any other tool.</p></details>
+    <details><summary>Are the thumbnails really AI-generated?</summary><p>Yes. The Thumbnail Generator creates original AI artwork from your report or your own prompt (up to 5,000 words), with an optional reference image, and adds a CTR analysis for every design.</p></details>
+    <details><summary>What do I get for free?</summary><p>The Free plan includes 3 reports and 3 AI thumbnail generations per month, 1 channel with audit, the Feed and the Keyword Explorer. Pro removes the tight limits.</p></details>
+    <details><summary>Is there a Chrome extension?</summary><p>An extension that brings PreRank scores inside YouTube Studio is in development. Join the waitlist below and we will email you at launch.</p></details>
+    <details><summary>Can I cancel any time?</summary><p>Yes. Plans are month-to-month with no lock-in; you keep your saved reports either way.</p></details>
+    <div class="panel" style="margin-top:22px">
+      <h3>Join the Chrome extension waitlist</h3>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><input type="email" id="wlEmail" placeholder="you@example.com" style="flex:1;min-width:220px"><button class="btn btn-pri" onclick="joinWaitlist()">Join waitlist</button></div>
+      <p id="wlMsg" style="color:var(--grn);font-size:13.5px;margin-top:10px;display:none">You're on the list. We'll email you when the extension launches.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><a class="brand"><img src="icon.webp" alt="">PreRank <em>AI</em></a><p>Research. Rank. Rise. The pre-publish research, SEO and thumbnail tool for YouTube creators.</p></div>
+      <div><h5>Product</h5><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a onclick="openAuth('signup')">Create account</a></li></ul></div>
+      <div><h5>Company</h5><ul><li>About</li><li>Privacy policy</li><li>Terms of service</li></ul></div>
+      <div><h5>Support</h5><ul><li id="supportEmail">support@prerankai.com</li></ul></div>
+    </div>
+    <div class="copyright"><span>© 2026 PreRank AI. All rights reserved.</span><span>Research. Rank. Rise.</span></div>
+  </div>
+</footer>
+</div>
+
+<!-- APP -->
+<div id="appView">
+  <div class="app-shell">
+    <aside class="side">
+      <div class="s-item" data-v="home" onclick="showApp('home')">🏠 Home</div>
+      <div class="s-item" data-v="feed" onclick="showApp('feed')">📰 Feed</div>
+      <div class="s-item" data-v="report" onclick="showApp('report')">🔍 Research — New Report</div>
+      <div class="s-item" data-v="optimize" onclick="showApp('optimize')">🎯 Optimize</div>
+      <div class="s-sec">Create</div>
+      <div class="s-item" data-v="generator" onclick="showApp('generator')">🖼️ Thumbnail Generator</div>
+      <div class="s-item" data-v="explorer" onclick="showApp('explorer')">⌨️ Keyword Explorer</div>
+      <div class="s-item" data-v="myreports" onclick="showApp('myreports')">📁 My Reports</div>
+      <div class="s-item" data-v="mythumbs" onclick="showApp('mythumbs')">🎨 My Thumbnails</div>
+      <div class="s-sec">Channel</div>
+      <div class="s-item" data-v="channels" onclick="showApp('channels')">📺 Channels & Audit</div>
+      <div class="s-item" data-v="competitors" onclick="showApp('competitors')">⚔️ Competitors</div>
+      <div class="s-item" data-v="calendar" onclick="showApp('calendar')">🗓️ Calendar</div>
+      <div class="s-sec">Account</div>
+      <div class="s-item" data-v="account" onclick="showApp('account')">⚙️ Account & Billing</div>
+      <div class="s-item" data-v="admin" id="sideAdmin" style="display:none" onclick="showApp('admin')">🛡️ Admin Panel</div>
+      <div class="plan-box" id="planBox"></div>
+    </aside>
+    <div class="main" id="mainArea"></div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal" id="authModal">
+  <div class="modal-box">
+    <button class="x" onclick="closeAuth()">×</button>
+    <h3 id="authTitle">Create your account</h3>
+    <p class="sub" id="authSub">Start with 3 free reports every month.</p>
+    <div id="authNameWrap"><label class="f-label">Full name</label><input id="authName" type="text" placeholder="Your name"></div>
+    <label class="f-label">Email</label><input id="authEmail" type="email" placeholder="you@example.com">
+    <label class="f-label">Password</label><input id="authPw" type="password" placeholder="6+ characters">
+    <div class="err" id="authErr"></div>
+    <button class="btn btn-pri btn-lg" style="width:100%;margin-top:20px" id="authBtn" onclick="submitAuth()">Create account</button>
+    <p style="text-align:center;color:var(--mut);font-size:13.5px;margin-top:16px" id="authSwitch"></p>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ helpers ============ */
+const $=s=>document.querySelector(s);
+async function api(path,method='GET',body){
+  const r=await fetch(path,{method,headers:{'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
+  const d=await r.json().catch(()=>({}));
+  if(!r.ok) throw Object.assign(new Error(d.error||d.message||'Request failed'),{data:d,status:r.status});
+  return d;
+}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2600)}
+function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+let ME=null, MYPLAN=null, USAGE={reports:0,thumbnails:0}, PLANS=[], SETTINGS={};
+
+/* ============ auth ============ */
+let authMode='signup';
+function openAuth(mode){authMode=mode;$('#authModal').classList.add('open');renderAuth()}
+function closeAuth(){$('#authModal').classList.remove('open')}
+function renderAuth(){
+  const su=authMode==='signup';
+  $('#authTitle').textContent=su?'Create your account':'Welcome back';
+  $('#authSub').textContent=su?'Start with 3 free reports every month.':'Sign in to your PreRank AI account.';
+  $('#authNameWrap').style.display=su?'block':'none';
+  $('#authBtn').textContent=su?'Create account':'Sign in';
+  $('#authErr').style.display='none';
+  $('#authSwitch').innerHTML=su?'Already have an account? <a style="color:var(--grn)" onclick="openAuth(\'signin\')">Sign in</a>':'New to PreRank? <a style="color:var(--grn)" onclick="openAuth(\'signup\')">Create a free account</a>';
+}
+async function submitAuth(){
+  const email=$('#authEmail').value.trim(), password=$('#authPw').value, name=$('#authName').value.trim();
+  try{
+    const d=authMode==='signup'?await api('/api/signup','POST',{name,email,password}):await api('/api/signin','POST',{email,password});
+    closeAuth(); await refreshMe(); toast(authMode==='signup'?'Account created — welcome to PreRank AI':'Welcome back'); showApp('home');
+  }catch(e){const er=$('#authErr');er.textContent=e.message;er.style.display='block'}
+}
+async function signOut(){await api('/api/signout','POST',{});ME=null;$('#navAnon').style.display='flex';$('#navUser').style.display='none';$('#appView').style.display='none';$('#landing').style.display='block';window.scrollTo(0,0)}
+async function refreshMe(){
+  const d=await api('/api/me'); ME=d.user; MYPLAN=d.plan; USAGE=d.usage||USAGE;
+  if(ME){$('#navAnon').style.display='none';$('#navUser').style.display='flex';$('#navUserName').textContent=ME.name+' · '+(MYPLAN?MYPLAN.name:'Free')+' plan';$('#sideAdmin').style.display=ME.role==='admin'?'flex':'none';renderPlanBox()}
+}
+function renderPlanBox(){
+  if(!ME||!MYPLAN)return;
+  const lim=MYPLAN.reportsPerMonth, used=USAGE.reports;
+  const pct=lim<0?100:Math.min(100,Math.round(used/lim*100));
+  $('#planBox').innerHTML=`<b>${esc(MYPLAN.name)} plan</b>Reports used this month<div class="bar"><i style="width:${pct}%"></i></div>${lim<0?used+' reports (unlimited)':used+' of '+lim+' free reports'}${ME.plan==='free'?'<div style="margin-top:10px"><a style="color:var(--grn);font-weight:600" onclick="showApp(\'account\')">Upgrade to Pro →</a></div>':''}`;
+}
+function goHome(){ if(ME){$('#appView').style.display='none';$('#landing').style.display='block';window.scrollTo(0,0)} else window.scrollTo(0,0) }
+
+/* ============ landing ============ */
+async function loadPlans(){
+  const d=await api('/api/plans'); PLANS=d.plans; SETTINGS=d.settings||{};
+  if(SETTINGS.announcement){$('#announce').textContent=SETTINGS.announcement;$('#announce').style.display='block'}
+  if(SETTINGS.supportEmail)$('#supportEmail').textContent=SETTINGS.supportEmail;
+  const feats={free:['3 reports per month','Idea Score & keyword table','5 title options per report','3 AI thumbnails / month','1 channel + audit'],pro:['40 reports per month','Full keyword & competitor data','12 titles with CTR scores','60 AI thumbnails / month','3 channels, unlimited audits','Chrome extension at launch'],team:['Unlimited reports','Unlimited AI thumbnails','Unlimited channels','Competitor tracking & calendar','Priority support']};
+  $('#priceGrid').innerHTML=PLANS.map(p=>`<div class="price ${p.id==='pro'?'pop':''}"><h3>${esc(p.name)}</h3><div class="amt">$${p.price}<small> / month</small></div><p style="color:var(--mut);font-size:14px">${p.id==='free'?'Test the workflow on real ideas.':p.id==='pro'?'For creators publishing every week.':'For channels run by a small team.'}</p><ul>${(feats[p.id]||[]).map(f=>`<li>${f}</li>`).join('')}</ul><button class="btn ${p.id==='pro'?'btn-pri':'btn-ghost'}" onclick="openAuth('signup')">${p.id==='free'?'Start free':'Go '+esc(p.name)}</button></div>`).join('');
+}
+async function joinWaitlist(){
+  const email=$('#wlEmail').value.trim();
+  try{await api('/api/waitlist','POST',{email});$('#wlMsg').style.display='block';$('#wlEmail').value=''}catch(e){toast(e.message)}
+}
+
+/* ============ app navigation ============ */
+function showApp(v){
+  if(!ME){openAuth('signin');return}
+  $('#landing').style.display='none';$('#appView').style.display='block';window.scrollTo(0,0);
+  document.querySelectorAll('.s-item').forEach(i=>i.classList.toggle('on',i.dataset.v===v));
+  ({home:renderHome,report:renderReportForm,myreports:renderMyReports,generator:renderGenerator,explorer:renderExplorer,channels:renderChannels,feed:renderFeed,optimize:renderOptimize,competitors:renderCompetitors,calendar:renderCalendar,account:renderAccount,admin:renderAdmin,mythumbs:renderMyThumbs}[v]||renderHome)();
+}
+function needLogin(){ if(!ME){openAuth('signin');return true} return false }
+
+/* ============ report engine ============ */
+const STOP=new Set('the a an and or of to in for with your you my is are was were be been it its this that from on at by as how what why when who will can all about into over after before video videos story'.split(' '));
+const NICHE_BANK={
+ 'Kids bedtime stories':{kw:['bedtime story for kids','bedtime stories for toddlers','kids story in english','story for kids','bedtime story','moral story for kids','sleep story for kids','animated story for kids'],pow:['Gentle','Magical','Sleepy','Amazing','Wonderful'],ever:95},
+ 'Education / Tutorials':{kw:['tutorial','for beginners','step by step','explained','full course','tips and tricks','common mistakes'],pow:['Complete','Ultimate','Proven','Simple','Essential'],ever:88},
+ 'Gaming':{kw:['gameplay','walkthrough','best settings','tier list','challenge','speedrun','tips and tricks'],pow:['Insane','Ultimate','Secret','Epic','Unbeatable'],ever:55},
+ 'Vlogs':{kw:['day in my life','vlog','routine','travel vlog','what i eat in a day','room tour'],pow:['Real','Honest','Extreme','Dream','Perfect'],ever:50},
+ 'Tech reviews':{kw:['review','unboxing','vs','worth it in 2026','honest review','battery test','camera test'],pow:['Honest','Ultimate','Surprising','Complete','Real'],ever:70},
+ 'Fitness':{kw:['workout','for beginners','at home','no equipment','weight loss','full body workout','30 day challenge'],pow:['Extreme','Ultimate','Proven','Complete','Intense'],ever:85},
+ 'Finance':{kw:['for beginners','investing','passive income','budget','save money','explained'],pow:['Smart','Proven','Simple','Ultimate','Honest'],ever:82},
+ 'Comedy / Entertainment':{kw:['funny','challenge','prank','try not to laugh','comedy skit','funny moments'],pow:['Funniest','Insane','Ultimate','Epic','Impossible'],ever:45}
+};
+function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))|0}return Math.abs(h)}
+function topicOf(idea){const w=idea.replace(/[^a-zA-Z0-9 ]/g,' ').split(/\s+/).filter(x=>x&&!STOP.has(x.toLowerCase()));return w.slice(0,5).join(' ')||idea.slice(0,40)}
+function kwScore(kw,niche){
+  const bank=NICHE_BANK[niche]||NICHE_BANK['Education / Tutorials'];
+  const words=kw.split(' ').length, h=hash(kw)%30;
+  let vol=words>=4?40:words===3?62:80; vol=Math.min(97,Math.max(18,vol+h-10));
+  let comp=kw.length<16?78:words>=4?30:52; comp=Math.min(95,Math.max(12,comp+(hash(kw+'c')%24)-8));
+  let opp=Math.round(Math.min(96,Math.max(15,(vol*0.55)+(100-comp)*0.6+(words>=3?10:0)+(h%10)-8)));
+  const volLabel=vol>75?'High':vol>50?'Medium':'Low–Med';
+  const compLabel=comp>68?'High':comp>42?'Medium':'Low';
+  return{keyword:kw,volume:volLabel,volNum:vol,competition:compLabel,opp};
+}
+function titleScores(t,primary){
+  let seo=55; if(primary&&t.toLowerCase().includes(primary.split(' ')[0]))seo+=18; if(t.length>=40&&t.length<=62)seo+=15; else if(t.length>30)seo+=7; seo+=hash(t)%9;
+  let ctr=52; if(/\d/.test(t))ctr+=10; if(/\?/.test(t))ctr+=9; if(/!/.test(t))ctr+=5; if(/(secret|nobody|mistake|truth|never|stop|why|how|best|vs|i tried)/i.test(t))ctr+=13; ctr+=hash(t+'x')%9;
+  return{seo:Math.min(97,seo),ctr:Math.min(97,ctr)};
+}
+const RAINBOW={
+ score:78,verdict:'GO',bars:{demand:86,competition:52,ctr:90,evergreen:94},
+ reasons:['Demand is real: YouTube search actively suggests “rainbow story for kids”, “rainbow colors for kids” and “bedtime story for kids in english”.','Competition is beatable: “learn colors” songs are owned by giant channels, but story-format colour content has a clear gap.','Evergreen topic: colours + rainbow + bedtime works all year and invites rewatching.'],
+ keywords:[['rainbow story for kids','Medium','Low',91],['bedtime story for kids in english','High','High',58],['rainbow colors for kids','High','High',55],['rainbow story for toddlers','Medium','Low',88],['rainbow story for preschoolers','Low–Med','Low',85],['learn colors for kids','Very High','Very High',30],['bedtime story for kids short','Medium','Medium',64],['color songs for toddlers','High','Very High',28]].map(k=>({keyword:k[0],volume:k[1],competition:k[2],opp:k[3]})),
+ titles:[['The Rainbow Lost Its Colors! 🌈 | Bedtime Story for Kids',92,88],['Sunny Saves the Rainbow! | Rainbow Story for Kids',89,90],['Where Did the Colors Go? 🌈 Bedtime Story for Toddlers',84,91],['The Rainbow That Lost Its Colors | Learn Colors Story for Kids',90,82],['A Rainbow With No Colors?! | Kids Story in English',78,93]].map(t=>({title:t[0],seo:t[1],ctr:t[2]})),
+ seoTitle:'The Rainbow Lost Its Colors! 🌈 | Bedtime Story for Kids',
+ description:'🌈 Oh no — the rainbow has lost ALL its colors! Join Mia and Sunny the baby dragon on a gentle bedtime adventure to find every colour and save the rainbow before bedtime.\n\nA calm rainbow story for kids that teaches colours — red, orange, yellow, green, blue and purple — with a sweet lesson about helping friends. A perfect bedtime story for toddlers and preschoolers. 💤\n\nCHAPTERS\n00:00 The rainbow is broken!\n00:25 Finding red\n00:50 Orange and yellow\n01:15 Green and blue\n01:40 The rainbow is back!',
+ tags:'rainbow story for kids, bedtime story for kids, rainbow colors for kids, bedtime story in english, learn colors story, kids story in english, rainbow story for toddlers, bedtime stories for toddlers, story for kids, mia and sunny, sunny dragon tales, colors for preschoolers, gentle bedtime story, kids adventure story',
+ hashtags:'#BedtimeStory #KidsStory #RainbowStory',
+ competitors:[{name:'Large nursery-rhyme channel',subs:'5M+',note:'Owns colour songs with daily uploads — do not fight on songs.'},{name:'Mid-size story channel',subs:'180K',note:'Posts generic fairy tales; weak thumbnails, no series characters.'},{name:'Small bedtime channel',subs:'12K',note:'Growing with character-led stories — proof the gap is winnable.'}],
+ gap:'Win with a character-led STORY (not a song): a recurring hero, a problem in the first 5 seconds, and a colour learned per scene.',
+ hooks:['“Last night, Mia looked out of her window… and gasped. The rainbow was BROKEN. All its colours were gone! ‘Sunny,’ she whispered, ‘we have to find them — before bedtime!’”'],
+ outline:'Grey rainbow discovered → red in the apple orchard → orange & yellow in the sunset garden → green in the frog pond → blue in the night-sky jar → purple found, rainbow restored → sleepy goodnight close + tease of tomorrow’s friend.',
+ shorts:['“The Moment the Rainbow Went GREY 😱” — the gasp scene, hook in the first two seconds.','“Can Sunny Find RED? 🔴” — the orchard search, cut as a loop.','“Count the Colours With Sunny! 🌈” — the restoration montage as a counting Short.'],
+ primary:'rainbow story for kids'
+};
+function buildReport(idea,niche,size){
+  if(/rainbow/i.test(idea)&&niche==='Kids bedtime stories') return {...RAINBOW,idea,niche,size,researched:true};
+  const bank=NICHE_BANK[niche]||NICHE_BANK['Education / Tutorials'];
+  const t=topicOf(idea), T=t.replace(/\b\w/g,c=>c.toUpperCase());
+  const patterns=[t,`${t} for beginners`,`${t} tutorial`,`how to ${t}`,`${t} tips`,`${t} mistakes`,`best ${t}`,`${t} explained`,`${t} guide`,`${t} step by step`,`${t} vs alternatives`,`${t} for kids`.replace(' for kids',niche.includes('Kids')?' for kids':''),...bank.kw.slice(0,5).map(k=>k.includes(t)?k:`${t} ${k.split(' ').slice(-2).join(' ')}`)];
+  const seen=new Set(), kws=[];
+  for(const p of patterns){const k=p.trim().toLowerCase();if(k&&!seen.has(k)){seen.add(k);kws.push(kwScore(k,niche))}}
+  kws.sort((a,b)=>b.opp-a.opp);
+  const top=kws.slice(0,12);
+  const avgOpp=Math.round(top.reduce((s,k)=>s+k.opp,0)/top.length);
+  const demand=Math.round(top.reduce((s,k)=>s+k.volNum,0)/top.length);
+  const sizeBoost=size&&size.includes('New')?6:size&&size.includes('Growing')?3:0;
+  const score=Math.max(28,Math.min(95,Math.round(avgOpp*0.72+demand*0.22+sizeBoost)));
+  const verdict=score>=80?'GO':score>=65?'PROMISING':'RISKY';
+  const pow=bank.pow[hash(t)%bank.pow.length];
+  const titlesRaw=[`${T} — Complete Guide for Beginners`,`I Tried ${T} for 30 Days (Honest Results)`,`7 ${T} Mistakes Beginners Always Make`,`How to ${T} (Step by Step)`,`The Truth About ${T} Nobody Tells You`,`${T} vs The Old Way — What Actually Works`,`Stop Doing ${T} Wrong — Do THIS Instead`,`${pow} ${T} Tips That Actually Work`,`What Is ${T}? Explained Simply`,`${T} in 24 Hours — My Challenge`,`Best ${T} Ideas for 2026`, `${T}? Watch This First!`];
+  const titles=titlesRaw.map(x=>({title:x,...titleScores(x,t)})).sort((a,b)=>(b.seo+b.ctr)-(a.seo+a.ctr)).slice(0,12);
+  const primary=top[0].keyword;
+  const tags=top.map(k=>k.keyword).concat(bank.kw.slice(0,6)).join(', ').slice(0,498);
+  const reasons=[`Strongest opening: “${primary}” scores ${top[0].opp}/100 opportunity in the ${niche} niche.`,`Average opportunity across the top keywords is ${avgOpp}/100 — ${avgOpp>=65?'a healthy set for a channel at your stage.':'a mixed set; lean on the top 3 long-tail keywords.'}`,verdict==='RISKY'?`Re-angle suggested: narrow “${t}” to one audience or one problem — broad topics lose to big channels.`:`Evergreen value is ${bank.ever}% for this niche — this topic can keep collecting views all year.`];
+  return{idea,niche,size,score,verdict,reasons,bars:{demand,competition:Math.round(top.reduce((s,k)=>s+(k.competition==='High'?80:k.competition==='Medium'?55:30),0)/top.length),ctr:Math.round(titles[0].ctr),evergreen:bank.ever},
+   keywords:top,titles,primary,
+   seoTitle:titles[0].title,
+   description:`${titles[0].title}\n\nIn this video we dive into ${t} — what works, what doesn't, and the exact steps to get it right, even if you're starting from zero.\n\n⏱ CHAPTERS\n00:00 The hook — why this matters\n00:30 The main idea, explained simply\n01:20 Step by step\n02:10 Mistakes to avoid\n02:45 Summary + what's next\n\nIf this helped, subscribe for a new video every week.\n\n#${primary.replace(/\s+/g,'')} #${niche.split(' ')[0]}`,
+   tags,hashtags:'#'+primary.split(' ').map((w,i)=>i?w[0].toUpperCase()+w.slice(1):w[0].toUpperCase()+w.slice(1)).join('')+' #YouTube #Creator',
+   competitors:[{name:'Large niche channel',subs:'1M+',note:'Wins on volume and back-catalogue; titles are generic.'},{name:'Mid-size specialist',subs:'150K',note:'Strong SEO, slow upload pace — beatable on consistency.'},{name:'Small fast-growing channel',subs:'9K',note:'Proves a small channel can win this keyword with better packaging.'}],
+   gap:`Win on specificity: own “${primary}” with a clearer promise and a stronger first 30 seconds than the generic videos ranking now.`,
+   hooks:[`Question hook: “What if everything you know about ${t} is wrong? In the next 30 seconds, I'll show you the part nobody talks about.”`,`Bold claim hook: “I studied the top 20 videos on ${t} — and 18 of them make the same mistake. Here's the fix.”`,`Story hook: “It started with one small problem: ${t}. What happened next changed how I do everything.”`],
+   outline:`0:00 Hook (problem + promise) → 0:30 Context in one line → main steps with a pattern interrupt at ~30% (surprising fact) → payoff section → final 20 seconds: recap + tease the next video on ${primary}.`,
+   shorts:[`“The 10-Second Truth About ${T}” — the boldest line from the hook, looped ending.`,`“Biggest ${T} Mistake 😱” — the #1 mistake as a standalone Short.`,`“${T} in 30 Seconds” — the full process sped up with captions.`]};
+}
+</script>
+
+<script>
+/* ============ views ============ */
+const NICHES=Object.keys(NICHE_BANK);
+function renderHome(){
+  $('#mainArea').innerHTML=`
+  <h2>Welcome back, ${esc(ME.name.split(' ')[0])}</h2><p class="lede">Your creator workspace — research, rank and rise.</p>
+  <div class="cards">
+    <div class="stat"><b>${USAGE.reports}</b><span>Reports this month ${MYPLAN&&MYPLAN.reportsPerMonth>=0?('of '+MYPLAN.reportsPerMonth):'(unlimited)'}</span></div>
+    <div class="stat"><b>${USAGE.thumbnails}</b><span>AI thumbnails this month</span></div>
+    <div class="stat"><b>${esc(MYPLAN?MYPLAN.name:'Free')}</b><span>Current plan</span></div>
+    <div class="stat"><b>${ME.role==='admin'?'Owner':'Creator'}</b><span>Account type</span></div>
+  </div>
+  <div class="panel"><h3>Quick actions</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-pri" onclick="showApp('report')">🔍 New report</button>
+      <button class="btn btn-ghost" onclick="showApp('generator')">🖼️ Generate thumbnail</button>
+      <button class="btn btn-ghost" onclick="showApp('channels')">📺 Run channel audit</button>
+      <button class="btn btn-ghost" onclick="showApp('optimize')">🎯 Optimize a video</button>
+    </div>
+  </div>
+  <div class="panel"><h3>Recent reports</h3><div id="homeReports" style="color:var(--mut);font-size:14px">Loading…</div></div>`;
+  api('/api/reports').then(d=>{
+    $('#homeReports').innerHTML=d.reports.length?d.reports.slice(0,5).map(r=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)"><span>${esc(r.idea.slice(0,70))}</span><span class="pill ${r.score>=80?'p-hi':r.score>=65?'p-md':'p-lo'}">${r.score}/100</span></div>`).join(''):'No reports yet — create your first one.';
+  }).catch(()=>{$('#homeReports').textContent='Could not load reports.'});
+}
+function renderReportForm(prefill){
+  $('#mainArea').innerHTML=`
+  <h2>Create a new report</h2><p class="lede">Describe the video you are thinking of making. PreRank scores it and builds the full package.</p>
+  <div class="panel">
+    <label class="f-label">Video idea</label>
+    <textarea id="idea">${esc(prefill||'The Rainbow That Lost Its Colors — a bedtime story where a baby dragon and a little girl bring the rainbow\'s colors back')}</textarea>
+    <div class="grid2">
+      <div><label class="f-label">Niche</label><select id="niche">${NICHES.map(n=>`<option ${n==='Kids bedtime stories'?'selected':''}>${n}</option>`).join('')}</select></div>
+      <div><label class="f-label">Channel size</label><select id="csize"><option>New channel (0–1K subscribers)</option><option>Growing (1K–10K)</option><option>Established (10K–100K)</option><option>Large (100K+)</option></select></div>
+    </div>
+    <button class="btn btn-pri btn-lg" style="width:100%;margin-top:20px" id="genBtn" onclick="generateReport()">Generate report</button>
+    <p style="font-size:12px;color:var(--mut2);margin-top:10px">Free plan: ${MYPLAN?MYPLAN.reportsPerMonth:3} reports/month · used ${USAGE.reports} this month. Scores are PreRank estimates — transparent, not copied from any other tool.</p>
+  </div>
+  <div id="reportOut"></div>`;
+}
+async function generateReport(seedIdea){
+  const idea=(seedIdea||$('#idea').value).trim(); if(!idea)return toast('Describe your idea first');
+  const niche=$('#niche')?$('#niche').value:'Kids bedtime stories'; const size=$('#csize')?$('#csize').value:'';
+  const btn=$('#genBtn'); if(btn){btn.innerHTML='<span class="spin"></span> Researching…';btn.disabled=true}
+  const report=buildReport(idea,niche,size);
+  try{
+    const d=await api('/api/reports','POST',{idea,niche,size,report});
+    USAGE.reports=d.usage; renderPlanBox();
+    renderReportInto($('#reportOut'),report,d.report.id);
+    toast('Report generated and saved');
+  }catch(e){
+    if(e.data&&e.data.error==='LIMIT'){ $('#reportOut').innerHTML=`<div class="panel" style="border-color:var(--amber)"><h3>Monthly limit reached</h3><p style="color:var(--mut)">${esc(e.data.message)}</p><button class="btn btn-pri" style="margin-top:12px" onclick="showApp('account')">See plans</button></div>`; }
+    else toast(e.message);
+  }finally{ if(btn){btn.innerHTML='Generate report';btn.disabled=false} }
+}
+function pill(v,type){let c;if(type==='opp')c=v>=70?'p-hi':v>=45?'p-md':'p-lo';else c=(v==='Low')?'p-hi':(v==='Very High'||v==='High')?'p-md':'p-md';if(type==='comp')c=v==='Low'?'p-hi':(v==='High'||v==='Very High')?'p-lo':'p-md';return `<span class="pill ${c}">${v}</span>`}
+function renderReportInto(el,r,savedId){
+  const vc=r.verdict==='GO'?'p-hi':r.verdict==='PROMISING'?'p-md':'p-lo';
+  el.innerHTML=`
+  <div class="panel">
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <div class="gauge gauge-lg" style="background:conic-gradient(var(--grn) ${r.score}%,#232a5e 0)"><div><b>${r.score}</b><small>IDEA SCORE</small></div></div>
+      <div style="flex:1;min-width:260px">
+        <div style="font-size:18px;font-weight:700">Verdict: <span class="pill ${vc}" style="font-size:14px">${r.verdict}</span> ${r.researched?'<span class="pill p-hi">Researched report</span>':''}</div>
+        <ul style="margin:8px 0 0 18px;color:var(--mut);font-size:14px;line-height:1.65">${r.reasons.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px;font-size:12px;color:var(--mut)">
+          ${[['Search demand',r.bars.demand],['Competition',r.bars.competition],['CTR potential',r.bars.ctr],['Evergreen',r.bars.evergreen]].map(b=>`<div>${b[0]}<div style="height:7px;background:#232a5e;border-radius:5px;margin-top:4px"><div style="height:100%;width:${b[1]}%;background:var(--grn);border-radius:5px"></div></div><b style="color:#fff">${b[1]}</b></div>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" onclick="rtab(this,'kw')">Keywords</button>
+      <button class="tab" onclick="rtab(this,'ti')">Titles</button>
+      <button class="tab" onclick="rtab(this,'seo')">SEO Pack</button>
+      <button class="tab" onclick="rtab(this,'comp')">Competitors</button>
+      <button class="tab" onclick="rtab(this,'hk')">Hook & Shorts</button>
+      <button class="tab" onclick="openGeneratorFor('${esc(r.primary||r.idea)}')">🖼️ Create thumbnail</button>
+    </div>
+    <div class="tpane on" data-p="kw"><div style="overflow-x:auto"><table><thead><tr><th>Keyword</th><th>Est. volume</th><th>Competition</th><th>Opportunity</th></tr></thead><tbody>
+      ${r.keywords.map(k=>`<tr><td>${esc(k.keyword)}</td><td>${esc(k.volume)}</td><td>${pill(k.competition,'comp')}</td><td>${pill(k.opp,'opp')} ${k.opp}</td></tr>`).join('')}
+    </tbody></table></div><p style="font-size:12.5px;color:var(--mut2);margin-top:10px">Primary keyword: <b style="color:#fff">${esc(r.primary)}</b> · Volume/competition are PreRank modelled estimates.</p></div>
+    <div class="tpane" data-p="ti"><ul class="t-list">${r.titles.map((t,i)=>`<li><span>${i===0?'⭐ ':''}${esc(t.title)}</span><span class="t-scores">SEO <b>${t.seo}</b> · CTR <b>${t.ctr}</b></span></li>`).join('')}</ul></div>
+    <div class="tpane" data-p="seo">
+      <div class="seo-box" id="seoFull">TITLE
+${esc(r.seoTitle)}
+
+DESCRIPTION
+${esc(r.description)}
+
+TAGS
+${esc(r.tags)}
+
+HASHTAGS
+${esc(r.hashtags)}</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-ghost btn-sm" onclick="copyText(document.getElementById('seoFull').textContent)">Copy full SEO pack</button><span style="font-size:12.5px;color:var(--mut2);align-self:center">Tags: ${r.tags.length} / 500 characters</span></div>
+    </div>
+    <div class="tpane" data-p="comp">
+      ${r.competitors.map(c=>`<div style="padding:10px 0;border-bottom:1px solid var(--line)"><b>${esc(c.name)}</b> <span class="pill p-md">${esc(c.subs)} subs</span><div style="color:var(--mut);font-size:13.5px;margin-top:4px">${esc(c.note)}</div></div>`).join('')}
+      <p style="margin-top:12px;font-size:14.5px"><b style="color:var(--grn)">The gap you can win:</b> ${esc(r.gap)}</p>
+    </div>
+    <div class="tpane" data-p="hk">
+      <h3 style="font-size:15px;margin-bottom:8px">Hook scripts (first 30 seconds)</h3>
+      <ul class="plain-list">${r.hooks.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>
+      <h3 style="font-size:15px;margin:16px 0 8px">Retention outline</h3><p style="color:#dfe3ff;font-size:14.5px">${esc(r.outline)}</p>
+      <h3 style="font-size:15px;margin:16px 0 8px">Shorts ideas</h3>
+      <ul class="plain-list">${r.shorts.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+    </div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-ghost btn-sm" onclick="exportReport()">Export report (.txt)</button>
+      ${savedId?`<button class="btn btn-danger btn-sm" onclick="deleteReport('${savedId}')">Delete report</button>`:''}
+    </div>
+  </div>`;
+  el.scrollIntoView({behavior:'smooth'});
+  window._lastReport=r;
+}
+function rtab(el,name){const panel=el.closest('.panel');panel.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');panel.querySelectorAll('.tpane').forEach(p=>p.classList.toggle('on',p.dataset.p===name))}
+function copyText(t){navigator.clipboard.writeText(t).then(()=>toast('Copied to clipboard'))}
+function exportReport(){const r=window._lastReport;if(!r)return;const txt=`PreRank AI Report — ${r.idea}\nScore: ${r.score}/100 (${r.verdict})\nPrimary keyword: ${r.primary}\n\nTITLE\n${r.seoTitle}\n\nDESCRIPTION\n${r.description}\n\nTAGS\n${r.tags}\n\nHASHTAGS\n${r.hashtags}\n\nKEYWORDS\n${r.keywords.map(k=>`${k.keyword} — vol ${k.volume}, comp ${k.competition}, opportunity ${k.opp}`).join('\n')}\n\nTITLES\n${r.titles.map(t=>`${t.title} (SEO ${t.seo}, CTR ${t.ctr})`).join('\n')}`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));a.download='prerank-report.txt';a.click()}
+async function deleteReport(id){await api('/api/reports/'+id,'DELETE');toast('Report deleted');showApp('myreports')}
+async function renderMyReports(){
+  $('#mainArea').innerHTML=`<h2>My Reports</h2><p class="lede">Every report you generate is saved to your account.</p><div id="mrList" style="color:var(--mut)">Loading…</div>`;
+  const d=await api('/api/reports');
+  $('#mrList').innerHTML=d.reports.length?d.reports.map(r=>`<div class="panel" style="display:flex;justify-content:space-between;gap:14px;align-items:center"><div><b>${esc(r.idea.slice(0,80))}</b><div style="font-size:12.5px;color:var(--mut)">${esc(r.niche||'')} · ${new Date(r.createdAt).toLocaleDateString()}</div></div><div style="display:flex;gap:8px;align-items:center"><span class="pill ${r.score>=80?'p-hi':r.score>=65?'p-md':'p-lo'}">${r.score}/100</span><button class="btn btn-ghost btn-sm" onclick='openSavedReport(${JSON.stringify(r.id)})'>Open</button></div></div>`).join(''):'<div class="panel">No reports yet.</div>';
+  window._savedReports=d.reports;
+}
+function openSavedReport(id){const r=(window._savedReports||[]).find(x=>x.id===id);if(!r)return;showApp('report');setTimeout(()=>{renderReportInto($('#reportOut'),r.report,id)},50)}
+</script>
+
+<script>
+/* ============ thumbnail generator ============ */
+let genTopic='';
+function openGeneratorFor(topic){genTopic=topic||'';showApp('generator')}
+function aiImgUrl(prompt,seed){const u=`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1280&height=720&seed=${seed}&nologo=true`;return '/api/img?url='+encodeURIComponent(u)}
+function ctrFor(text,style){let s=88-(text.split(/\s+/).length>3?(text.split(/\s+/).length-3)*6:0)+(style==='Bold CTR'?4:0);return Math.max(62,Math.min(96,s+(hash(text)%5)))}
+function renderGenerator(){
+  $('#mainArea').innerHTML=`
+  <h2>AI Thumbnail Generator</h2><p class="lede">Original AI thumbnails, built for clicks. Two ways to create — auto-build from a topic, or your own detailed prompt.</p>
+  <div class="tabs"><button class="tab on" id="gtAuto" onclick="genMode('auto')">Auto Build</button><button class="tab" id="gtPrompt" onclick="genMode('prompt')">Prompt Builder</button></div>
+  <div class="panel" id="genAutoPanel">
+    <label class="f-label">Topic / video title</label>
+    <input id="gTopic" type="text" value="${esc(genTopic)}" placeholder="e.g. The Rainbow Lost Its Colors — kids bedtime story">
+    <div class="grid2">
+      <div><label class="f-label">Style</label><select id="gStyle"><option>Bold CTR</option><option>Cinematic</option><option>Cartoon 3D</option><option>Photoreal</option><option>Minimal</option></select></div>
+      <div><label class="f-label">Emotion</label><select id="gEmotion"><option>Shocked</option><option>Excited</option><option>Happy</option><option>Curious</option><option>Serious</option></select></div>
+    </div>
+    <label class="f-label">Thumbnail text (2–3 words work best)</label>
+    <input id="gText" type="text" value="COLORS GONE!" placeholder="e.g. COLORS GONE!">
+    <button class="btn btn-pri btn-lg" style="width:100%;margin-top:18px" onclick="runGenerate('auto')">Generate 3 thumbnails</button>
+  </div>
+  <div class="panel" id="genPromptPanel" style="display:none">
+    <label class="f-label">Your detailed prompt</label>
+    <textarea id="gPrompt" style="min-height:150px" placeholder="Describe the thumbnail in full detail — characters, scene, colors, mood, composition…" oninput="document.getElementById('wc').textContent=wordCount(this.value)+' / 5000 words'"></textarea>
+    <div style="display:flex;justify-content:space-between;font-size:12.5px;color:var(--mut2)"><span id="wc">0 / 5000 words</span><span>Long, specific prompts give the best results.</span></div>
+    <label class="f-label">Reference image (optional) — used as your thumbnail base with pro text styling</label>
+    <input id="gRef" type="file" accept="image/*">
+    <div class="grid2">
+      <div><label class="f-label">Style</label><select id="gStyle2"><option>Bold CTR</option><option>Cinematic</option><option>Cartoon 3D</option><option>Photoreal</option><option>Minimal</option></select></div>
+      <div><label class="f-label">Thumbnail text</label><input id="gText2" type="text" placeholder="e.g. I TRIED IT!"></div>
+    </div>
+    <button class="btn btn-pri btn-lg" style="width:100%;margin-top:18px" onclick="runGenerate('prompt')">Generate from prompt</button>
+  </div>
+  <div id="genOut"></div>`;
+}
+function wordCount(s){return (s.trim().match(/\S+/g)||[]).length}
+function genMode(m){$('#gtAuto').classList.toggle('on',m==='auto');$('#gtPrompt').classList.toggle('on',m==='prompt');$('#genAutoPanel').style.display=m==='auto'?'block':'none';$('#genPromptPanel').style.display=m==='prompt'?'block':'none'}
+async function runGenerate(mode){
+  const out=$('#genOut');
+  let prompt,text,style;
+  if(mode==='auto'){
+    const topic=$('#gTopic').value.trim(); if(!topic)return toast('Enter a topic first');
+    style=$('#gStyle').value; const emo=$('#gEmotion').value; text=$('#gText').value.trim();
+    prompt=`YouTube thumbnail, ${style} style: ${topic}. One clear focal subject with a ${emo.toLowerCase()} expressive face, ultra vibrant colors, extreme contrast, dramatic lighting, clean composition with empty space for text, no text in image, designed for maximum click-through rate`;
+  }else{
+    const p=$('#gPrompt').value.trim(); if(wordCount(p)<3)return toast('Write a prompt first (a sentence or more)');
+    if(wordCount(p)>5000)return toast('Prompt is over 5000 words');
+    style=$('#gStyle2').value; text=$('#gText2').value.trim();
+    prompt=`YouTube thumbnail, ${style} style: ${p}. Ultra vibrant, high contrast, clean composition, no text in image unless described`;
+    const ref=$('#gRef').files[0];
+    if(ref){ // reference becomes the base, styled with pro text overlay
+      const url=URL.createObjectURL(ref);
+      out.innerHTML=`<div class="panel"><h3>Your reference, styled</h3><div class="thumb-grid"><div class="tcard"><img src="${url}"><div class="tb"><b>Reference base</b><span class="ctr">${ctrFor(text||'REF',style)}</span><p>Your uploaded image as the thumbnail base. Add text & download the finished 1280×720 file:</p><button class="btn btn-pri btn-sm" style="margin-top:8px" onclick="downloadWithText('${url}','${esc(text||'')}')">Add text & download PNG</button></div></div></div><p style="font-size:12.5px;color:var(--mut2);margin-top:10px">AI generation from your written prompt is also running below if you described a scene.</p></div>`+(out.innerHTML||'');
+    }
+  }
+  out.insertAdjacentHTML('beforeend',`<div class="panel" id="genLoading"><span class="spin"></span> Generating original AI thumbnails… this can take 20–60 seconds.</div>`);
+  const ctr=ctrFor(text||prompt,style);
+  const cards=[];
+  for(let i=0;i<3;i++){
+    const seed=Math.floor(Math.random()*99999);
+    const src=aiImgUrl(prompt,seed);
+    try{ await api('/api/thumbnails','POST',{mode,prompt:prompt+' [seed '+seed+']',imageUrl:src,ctr}); USAGE.thumbnails++; }
+    catch(e){ if(e.data&&e.data.error==='LIMIT'){ $('#genLoading')?.remove(); toast('Monthly thumbnail limit reached — upgrade to continue'); showApp('account'); return } }
+    cards.push(`<div class="tcard"><img src="${src}" alt="AI thumbnail"><div class="tb"><b>Design ${'ABC'[i]}</b><span class="ctr">CTR ${ctr-i*3}</span><p>Contrast: high · Face/emotion: ${mode==='auto'?'strong':'per prompt'} · Text space: clean · Mobile readability: ${text&&text.split(/\s+/).length<=3?'excellent':'good — keep text to 2–3 words'}</p><button class="btn btn-pri btn-sm" style="margin-top:8px" onclick="downloadWithText('${src}','${esc(text||'')}')">Download 1280×720 PNG${text?' with text':''}</button></div></div>`);
+  }
+  $('#genLoading')?.remove();
+  out.insertAdjacentHTML('beforeend',`<div class="panel"><h3>Your AI thumbnails</h3><div class="thumb-grid">${cards.join('')}</div><p style="font-size:12.5px;color:var(--mut2);margin-top:10px">Saved to My Thumbnails. Generation by a free AI image provider — quality and speed can vary at busy times.</p></div>`);
+  renderPlanBox();
+}
+async function downloadWithText(src,text){
+  const img=new Image(); img.crossOrigin='anonymous';
+  await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;img.src=src});
+  const c=document.createElement('canvas');c.width=1280;c.height=720;const x=c.getContext('2d');
+  const s=Math.max(1280/img.width,720/img.height);const w=img.width*s,h=img.height*s;
+  x.drawImage(img,(1280-w)/2,(720-h)/2,w,h);
+  if(text){
+    x.font='800 92px Sora, Arial';x.textAlign='left';x.textBaseline='top';
+    const words=text.split(/\s+/);let lines=[],line='';
+    for(const w of words){if((line+' '+w).trim().length>14){lines.push(line.trim());line=w}else line+=' '+w}
+    if(line.trim())lines.push(line.trim());
+    lines.slice(0,3).forEach((ln,i)=>{x.lineWidth=16;x.strokeStyle='#000';x.strokeText(ln.toUpperCase(),44,40+i*104);x.fillStyle=i%2?'#ffe93c':'#ffffff';x.fillText(ln.toUpperCase(),44,40+i*104)});
+  }
+  c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='prerank-thumbnail.png';a.click();toast('Thumbnail downloaded')});
+}
+async function renderMyThumbs(){
+  $('#mainArea').innerHTML=`<h2>My Thumbnails</h2><p class="lede">Every AI thumbnail you generate is saved here.</p><div id="mtList" style="color:var(--mut)">Loading…</div>`;
+  const d=await api('/api/thumbnails');
+  $('#mtList').innerHTML=d.thumbnails.length?`<div class="thumb-grid">${d.thumbnails.map(t=>`<div class="tcard"><img src="${esc(t.imageUrl)}"><div class="tb"><b>${t.mode==='auto'?'Auto Build':'Prompt'}</b><span class="ctr">CTR ${t.ctr??'—'}</span><p>${esc((t.prompt||'').slice(0,90))}…</p><p>${new Date(t.createdAt).toLocaleDateString()}</p></div></div>`).join('')}</div>`:'<div class="panel">No thumbnails yet — generate your first one.</div>';
+}
+
+/* ============ explorer ============ */
+function renderExplorer(){
+  $('#mainArea').innerHTML=`<h2>Keyword Explorer</h2><p class="lede">Quick keyword research without a full report.</p>
+  <div class="panel"><div class="grid2"><div><label class="f-label">Topic</label><input id="exTopic" type="text" placeholder="e.g. home workout"></div>
+  <div><label class="f-label">Niche</label><select id="exNiche">${NICHES.map(n=>`<option>${n}</option>`).join('')}</select></div></div>
+  <button class="btn btn-pri" style="margin-top:16px" onclick="runExplorer()">Research keywords</button></div><div id="exOut"></div>`;
+}
+function runExplorer(){
+  const t=$('#exTopic').value.trim(); if(!t)return toast('Enter a topic');
+  const r=buildReport(t,$('#exNiche').value,'New channel (0–1K subscribers)');
+  $('#exOut').innerHTML=`<div class="panel"><div style="overflow-x:auto"><table><thead><tr><th>Keyword</th><th>Est. volume</th><th>Competition</th><th>Opportunity</th></tr></thead><tbody>${r.keywords.map(k=>`<tr><td>${esc(k.keyword)}</td><td>${esc(k.volume)}</td><td>${pill(k.competition,'comp')}</td><td>${pill(k.opp,'opp')} ${k.opp}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+
+/* ============ channels & audit ============ */
+async function renderChannels(){
+  $('#mainArea').innerHTML=`<h2>Channels & Audit</h2><p class="lede">Add your channel, then run an audit on it. Audit runs on the data you provide — YouTube auto-connect arrives with the API launch step.</p>
+  <div class="panel"><h3>Add a channel</h3>
+    <div class="grid2"><div><label class="f-label">Channel name</label><input id="chName" type="text"></div><div><label class="f-label">Handle / URL</label><input id="chHandle" type="text" placeholder="@MyChannel"></div></div>
+    <div class="grid2"><div><label class="f-label">Niche</label><select id="chNiche">${NICHES.map(n=>`<option>${n}</option>`).join('')}</select></div><div><label class="f-label">Subscribers</label><input id="chSubs" type="number" placeholder="e.g. 1250"></div></div>
+    <div class="grid2"><div><label class="f-label">Average views per video</label><input id="chViews" type="number"></div><div><label class="f-label">Uploads per week</label><input id="chUp" type="number" step="0.5"></div></div>
+    <button class="btn btn-pri" style="margin-top:14px" onclick="addChannel()">Add channel</button>
+  </div>
+  <div id="chList" style="color:var(--mut)">Loading channels…</div>
+  <div class="panel"><h3>Run a channel audit</h3>
+    <label class="f-label">Paste up to 10 recent video titles (one per line)</label>
+    <textarea id="auditTitles" style="min-height:130px" placeholder="My First Video Title&#10;Second Title Here&#10;..."></textarea>
+    <button class="btn btn-pri" style="margin-top:12px" onclick="runAudit()">Run audit</button>
+    <div id="auditOut" style="margin-top:16px"></div>
+  </div>`;
+  const d=await api('/api/items?type=channel');
+  $('#chList').innerHTML=d.items.length?d.items.map(i=>`<div class="panel" style="display:flex;justify-content:space-between;align-items:center"><div><b>${esc(i.data.name)}</b> <span style="color:var(--mut)">${esc(i.data.handle||'')}</span><div style="font-size:12.5px;color:var(--mut)">${esc(i.data.niche)} · ${Number(i.data.subs||0).toLocaleString()} subs · ${i.data.uploads||0} uploads/week</div></div><button class="btn btn-danger btn-sm" onclick="delItem('${i.id}','channels')">Delete</button></div>`).join(''):'<div class="panel">No channels yet.</div>';
+}
+async function addChannel(){
+  const data={name:$('#chName').value.trim(),handle:$('#chHandle').value.trim(),niche:$('#chNiche').value,subs:$('#chSubs').value,views:$('#chViews').value,uploads:$('#chUp').value};
+  if(!data.name)return toast('Channel name required');
+  await api('/api/items','POST',{type:'channel',data}); toast('Channel added'); renderChannels();
+}
+async function delItem(id,view){await api('/api/items/'+id,'DELETE');showApp(view)}
+async function runAudit(){
+  const titles=$('#auditTitles').value.split('\n').map(s=>s.trim()).filter(Boolean).slice(0,10);
+  if(titles.length<2)return toast('Paste at least 2 recent titles');
+  const scored=titles.map(t=>{const s=titleScores(t,t.toLowerCase());const avg=Math.round((s.seo+s.ctr)/2);return{t,score:avg,bad:avg<60}});
+  const avgAll=Math.round(scored.reduce((a,b)=>a+b.score,0)/scored.length);
+  const chanScore=Math.min(95,Math.round(avgAll*0.8+14));
+  const out=$('#auditOut');
+  out.innerHTML=`<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <div class="gauge gauge-lg" style="background:conic-gradient(var(--grn) ${chanScore}%,#232a5e 0)"><div><b>${chanScore}</b><small>CHANNEL SCORE</small></div></div>
+    <div style="flex:1;min-width:240px"><b>Top 5 fixes</b><ul style="margin:6px 0 0 18px;color:var(--mut);font-size:14px;line-height:1.7">
+      <li>Put the searched keyword in the first 40 characters of every title.</li>
+      <li>Add a number or a question to weak titles — both lift CTR measurably.</li>
+      <li>Keep one clear series promise per video so viewers binge the next one.</li>
+      <li>Thumbnails: 2–3 words maximum, one face, one emotion.</li>
+      <li>Post on a fixed schedule — consistency is a ranking signal for small channels.</li></ul></div></div>
+    <table style="margin-top:16px"><thead><tr><th>Your title</th><th>Score</th><th>Stronger version</th></tr></thead><tbody>
+    ${scored.map(s=>`<tr><td>${esc(s.t)}</td><td>${pill(s.score,'opp')} ${s.score}</td><td>${esc(s.bad?('How to '+s.t.charAt(0).toUpperCase()+s.t.slice(1).replace(/\s*\|.*$/,'')+' (Step by Step)'):s.t)}</td></tr>`).join('')}
+    </tbody></table>`;
+  await api('/api/items','POST',{type:'audit',data:{score:chanScore,titles:titles.length}});
+  toast('Audit saved');
+}
+
+/* ============ feed ============ */
+function renderFeed(){
+  const cards=[];
+  const ideas=['I Tried It for 30 Days — Honest Results','The Beginner Mistake Everyone Makes','What Nobody Tells You (Watch Before You Start)','7 Things I Wish I Knew Earlier','Cheap vs Expensive — Is It Worth It?','I Asked 100 People — The Answers Shocked Me','The 10-Minute Version That Actually Works','Stop Doing This Wrong (Do This Instead)'];
+  for(let i=0;i<6;i++){const h=hash(ME.id+i+Date.now()%997);const subs=[2400,15000,800,45000,1200,9000][h%6];const views=subs*(2+(h%14));cards.push({t:ideas[h%ideas.length],subs,views,out:Math.round(views/subs)})}
+  $('#mainArea').innerHTML=`<h2>Feed</h2><p class="lede">Fresh rising ideas in your niche, scored by outlier potential. Numbers are PreRank estimates.</p>
+  <div class="feed-grid">${cards.map((c,i)=>`<div class="fcard"><h4>${esc(c.t)}</h4><div class="meta"><span>Channel size: ${c.subs.toLocaleString()} subs</span><span>Est. views: ${c.views.toLocaleString()}</span><span>Outlier score: <b style="color:var(--grn)">${c.out}×</b></span></div><div style="display:flex;gap:8px"><button class="btn btn-pri btn-sm" onclick="feedToReport('${esc(c.t)}')">Turn into report</button><button class="btn btn-ghost btn-sm" onclick="saveToCalendar('${esc(c.t)}')">Save to calendar</button></div></div>`).join('')}</div>
+  <button class="btn btn-ghost" style="margin-top:16px" onclick="renderFeed()">↻ Refresh feed</button>`;
+}
+function feedToReport(t){showApp('report');setTimeout(()=>{const i=$('#idea');if(i)i.value=t;generateReport(t)},60)}
+async function saveToCalendar(t){await api('/api/items','POST',{type:'calendar',data:{title:t,date:new Date().toISOString().slice(0,10),status:'Idea'}});toast('Saved to calendar')}
+
+/* ============ optimize ============ */
+function renderOptimize(){
+  $('#mainArea').innerHTML=`<h2>Optimize a video</h2><p class="lede">Improve a video you already published — title, description, tags and thumbnail verdict.</p>
+  <div class="panel">
+    <label class="f-label">Current title</label><input id="opTitle" type="text" placeholder="Your current video title">
+    <div class="grid2"><div><label class="f-label">Target keyword</label><input id="opKw" type="text"></div><div><label class="f-label">Current thumbnail text</label><input id="opThumb" type="text"></div></div>
+    <div class="grid2"><div><label class="f-label">Views so far</label><input id="opViews" type="number"></div><div><label class="f-label">Days since published</label><input id="opDays" type="number"></div></div>
+    <button class="btn btn-pri" style="margin-top:14px" onclick="runOptimize()">Optimize this video</button>
+    <div id="opOut" style="margin-top:16px"></div>
+  </div>`;
+}
+async function runOptimize(){
+  const title=$('#opTitle').value.trim(); if(!title)return toast('Enter the current title');
+  const kw=$('#opKw').value.trim()||topicOf(title);
+  const r=buildReport('How to '+kw+' — '+title,'Education / Tutorials','Growing (1K–10K)');
+  const cur=titleScores(title,kw); const curScore=Math.round((cur.seo+cur.ctr)/2);
+  $('#opOut').innerHTML=`
+   <p style="font-size:15px">Current title score: <span class="pill ${curScore>=70?'p-hi':curScore>=55?'p-md':'p-lo'}">${curScore}/100</span></p>
+   <p style="color:var(--mut);font-size:14px;margin:8px 0">${curScore<70?'Problems: keyword not leading, no number/question hook, or length outside the 40–60 character sweet spot.':'Your title is decent — the options below can still beat it on CTR.'}</p>
+   <h3 style="font-size:15px;margin:14px 0 8px">5 improved titles</h3>
+   <ul class="t-list">${r.titles.slice(0,5).map(t=>`<li><span>${esc(t.title)}</span><span class="t-scores">SEO <b>${t.seo}</b> · CTR <b>${t.ctr}</b></span></li>`).join('')}</ul>
+   <h3 style="font-size:15px;margin:16px 0 8px">Rewritten description</h3><div class="seo-box">${esc(r.description)}</div>
+   <h3 style="font-size:15px;margin:16px 0 8px">Fixed tags (${r.tags.length}/500)</h3><div class="seo-box">${esc(r.tags)}</div>
+   <p style="font-size:14.5px;margin-top:6px"><b style="color:var(--grn)">Thumbnail verdict:</b> ${($('#opThumb').value.trim().split(/\s+/).length>3)?'Your thumbnail text is too long — cut it to 2–3 words.':'Text length is fine — check contrast and one clear emotion at mobile size.'}</p>
+   <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-pri btn-sm" onclick="openGeneratorFor('${esc(kw)}')">Send to Thumbnail Generator</button><button class="btn btn-ghost btn-sm" onclick="copyText(document.querySelector('#opOut .seo-box').textContent)">Copy description</button></div>
+   <p style="color:var(--mut);font-size:13.5px;margin-top:14px">Re-publish checklist: update title → swap thumbnail → pin a comment with the new hook → community post → check CTR after 48 hours.</p>`;
+  await api('/api/items','POST',{type:'video',data:{title,keyword:kw,score:curScore}});
+}
+
+/* ============ competitors & calendar ============ */
+async function renderCompetitors(){
+  $('#mainArea').innerHTML=`<h2>Competitors</h2><p class="lede">Track rival channels and see the gap to close.</p>
+  <div class="panel"><div class="grid2"><div><label class="f-label">Channel name</label><input id="cpName" type="text"></div><div><label class="f-label">Subscribers</label><input id="cpSubs" type="number"></div></div>
+  <label class="f-label">Average views</label><input id="cpViews" type="number">
+  <button class="btn btn-pri" style="margin-top:12px" onclick="addCompetitor()">Add competitor</button></div><div id="cpList" style="color:var(--mut)">Loading…</div>`;
+  const d=await api('/api/items?type=competitor');
+  $('#cpList').innerHTML=d.items.length?`<div class="panel"><table><thead><tr><th>Channel</th><th>Subs</th><th>Avg views</th><th></th></tr></thead><tbody>${d.items.map(i=>`<tr><td>${esc(i.data.name)}</td><td>${Number(i.data.subs||0).toLocaleString()}</td><td>${Number(i.data.views||0).toLocaleString()}</td><td><button class="btn btn-danger btn-sm" onclick="delItem('${i.id}','competitors')">Delete</button></td></tr>`).join('')}</tbody></table><p style="color:var(--mut);font-size:13.5px;margin-top:12px">Gap insight: beat bigger rivals on packaging (title + thumbnail) and a tighter niche promise — not on upload volume.</p></div>`:'<div class="panel">No competitors tracked yet.</div>';
+}
+async function addCompetitor(){const data={name:$('#cpName').value.trim(),subs:$('#cpSubs').value,views:$('#cpViews').value};if(!data.name)return toast('Name required');await api('/api/items','POST',{type:'competitor',data});renderCompetitors()}
+async function renderCalendar(){
+  $('#mainArea').innerHTML=`<h2>Content Calendar</h2><p class="lede">Plan what you will make, and when.</p>
+  <div class="panel"><div class="grid2"><div><label class="f-label">Video idea / title</label><input id="calTitle" type="text"></div><div><label class="f-label">Date</label><input id="calDate" type="date"></div></div>
+  <label class="f-label">Status</label><select id="calStatus"><option>Idea</option><option>Filming</option><option>Published</option></select>
+  <button class="btn btn-pri" style="margin-top:12px" onclick="addCal()">Add to calendar</button></div><div id="calList" style="color:var(--mut)">Loading…</div>`;
+  const d=await api('/api/items?type=calendar');
+  $('#calList').innerHTML=d.items.length?d.items.map(i=>`<div class="panel" style="display:flex;justify-content:space-between;align-items:center"><div><b>${esc(i.data.title)}</b><div style="font-size:12.5px;color:var(--mut)">${esc(i.data.date||'')} · ${esc(i.data.status||'Idea')}</div></div><button class="btn btn-danger btn-sm" onclick="delItem('${i.id}','calendar')">Delete</button></div>`).join(''):'<div class="panel">Nothing planned yet.</div>';
+}
+async function addCal(){const data={title:$('#calTitle').value.trim(),date:$('#calDate').value,status:$('#calStatus').value};if(!data.title)return toast('Title required');await api('/api/items','POST',{type:'calendar',data});renderCalendar()}
+
+/* ============ account & checkout ============ */
+async function renderAccount(){
+  const o=await api('/api/orders').catch(()=>({orders:[]}));
+  $('#mainArea').innerHTML=`<h2>Account & Billing</h2><p class="lede">${esc(ME.name)} · ${esc(ME.email)} · ${esc(MYPLAN.name)} plan</p>
+  <div class="cards"><div class="stat"><b>${USAGE.reports}</b><span>Reports used this month</span></div><div class="stat"><b>${USAGE.thumbnails}</b><span>Thumbnails used this month</span></div><div class="stat"><b>${esc(MYPLAN.name)}</b><span>Current plan — $${MYPLAN.price}/mo</span></div></div>
+  <div class="panel"><h3>Change plan</h3><div style="display:flex;gap:10px;flex-wrap:wrap">${PLANS.filter(p=>p.price>0).map(p=>`<button class="btn ${ME.plan===p.id?'btn-ghost':'btn-pri'}" ${ME.plan===p.id?'disabled':''} onclick="checkout('${p.id}')">${ME.plan===p.id?'Current plan':('Upgrade to '+esc(p.name)+' — $'+p.price+'/mo')}</button>`).join('')}</div>
+  <p style="font-size:12.5px;color:var(--mut2);margin-top:10px">Checkout runs in TEST MODE — no real charge until Stripe is connected at public launch.</p></div>
+  <div class="panel"><h3>Billing history</h3>${o.orders.length?`<table><thead><tr><th>Order</th><th>Date</th><th>Plan</th><th>Amount</th><th>Status</th></tr></thead><tbody>${o.orders.map(x=>`<tr><td>${x.id}</td><td>${new Date(x.createdAt).toLocaleDateString()}</td><td>${esc(x.plan)}</td><td>$${x.amount}</td><td>${esc(x.status)}</td></tr>`).join('')}</tbody></table>`:'<p style="color:var(--mut);font-size:14px">No orders yet.</p>'}</div>
+  <div class="panel"><h3>Change password</h3><div class="grid2"><div><label class="f-label">Current password</label><input id="pwCur" type="password"></div><div><label class="f-label">New password</label><input id="pwNew" type="password"></div></div><button class="btn btn-ghost" style="margin-top:12px" onclick="changePw()">Update password</button></div>`;
+}
+async function checkout(planId){
+  if(!confirm('TEST MODE checkout — no real money will be charged. Continue?'))return;
+  try{const d=await api('/api/checkout','POST',{planId});ME=d.user;await refreshMe();toast('Upgraded — order '+d.order.id+' created');renderAccount()}catch(e){toast(e.message)}
+}
+async function changePw(){try{await api('/api/change-password','POST',{current:$('#pwCur').value,next:$('#pwNew').value});toast('Password updated')}catch(e){toast(e.message)}}
+
+/* ============ admin ============ */
+async function renderAdmin(){
+  if(ME.role!=='admin'){$('#mainArea').innerHTML='<div class="panel">Admin access required.</div>';return}
+  $('#mainArea').innerHTML=`<h2>Admin Panel</h2><p class="lede">Full control — users, payments, orders, plans and settings.</p><div id="adOut" style="color:var(--mut)">Loading…</div>`;
+  const [ov,us,or,pl,wl]=await Promise.all([api('/api/admin/overview'),api('/api/admin/users'),api('/api/admin/orders'),api('/api/plans'),api('/api/admin/waitlist')]);
+  $('#adOut').innerHTML=`
+  <div class="cards">
+    <div class="stat"><b>${ov.totalUsers}</b><span>Total users</span></div>
+    <div class="stat"><b>${ov.paidSubscribers}</b><span>Paid subscribers</span></div>
+    <div class="stat"><b>$${ov.revenue}</b><span>Revenue (paid orders)</span></div>
+    <div class="stat"><b>${ov.totalReports}</b><span>Reports generated</span></div>
+    <div class="stat"><b>${ov.totalThumbnails}</b><span>Thumbnails generated</span></div>
+    <div class="stat"><b>${ov.totalChannels}/${ov.totalAudits}/${ov.totalOptimizations}</b><span>Channels / Audits / Optimizations</span></div>
+  </div>
+  <div class="panel"><h3>Users</h3><div style="overflow-x:auto"><table><thead><tr><th>Name</th><th>Email</th><th>Plan</th><th>Status</th><th>Reports (month)</th><th>Actions</th></tr></thead><tbody>
+    ${us.users.map(u=>`<tr><td>${esc(u.name)}</td><td>${esc(u.email)}</td><td><select onchange="adminUserPlan('${u.id}',this.value)" style="padding:6px">${PLANS.map(p=>`<option value="${p.id}" ${u.plan===p.id?'selected':''}>${p.name}</option>`).join('')}</select></td><td>${esc(u.status)}</td><td>${u.usageThisMonth}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="adminUserStatus('${u.id}','${u.status==='suspended'?'active':'suspended'}')">${u.status==='suspended'?'Reactivate':'Suspend'}</button> <button class="btn btn-ghost btn-sm" onclick="adminUserReset('${u.id}')">Reset usage</button> ${u.role!=='admin'?`<button class="btn btn-danger btn-sm" onclick="adminUserDelete('${u.id}')">Delete</button>`:''}</td></tr>`).join('')}
+  </tbody></table></div></div>
+  <div class="panel"><h3>Orders & Payments</h3><div style="overflow-x:auto"><table><thead><tr><th>Order</th><th>Date</th><th>Customer</th><th>Plan</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead><tbody>
+    ${or.orders.map(o=>`<tr><td>${o.id}</td><td>${new Date(o.createdAt).toLocaleDateString()}</td><td>${esc(o.email)}</td><td>${esc(o.plan)}</td><td>$${o.amount}</td><td>${esc(o.status)}</td><td style="white-space:nowrap"><button class="btn btn-ghost btn-sm" onclick="adminOrder('${o.id}','refunded')">Refund</button> <button class="btn btn-ghost btn-sm" onclick="adminOrder('${o.id}','cancelled')">Cancel</button></td></tr>`).join('')||'<tr><td colspan="7" style="color:var(--mut)">No orders yet.</td></tr>'}
+  </tbody></table></div><button class="btn btn-ghost btn-sm" style="margin-top:12px" onclick="window.open('/api/admin/orders.csv','_blank')">Export orders (CSV)</button></div>
+  <div class="panel"><h3>Plans & Pricing (edits apply live)</h3>
+    ${pl.plans.map(p=>`<div class="grid2" style="margin-bottom:10px"><div><label class="f-label">${esc(p.name)} — price $/mo</label><input type="number" id="pl_price_${p.id}" value="${p.price}"></div><div><label class="f-label">Reports/mo (-1 = unlimited)</label><input type="number" id="pl_rep_${p.id}" value="${p.reportsPerMonth}"></div></div><div class="grid2"><div><label class="f-label">Thumbnails/mo</label><input type="number" id="pl_th_${p.id}" value="${p.thumbnailsPerMonth}"></div><div style="display:flex;align-items:end"><button class="btn btn-pri btn-sm" onclick="adminPlan('${p.id}')">Save ${esc(p.name)}</button></div></div><hr style="border-color:var(--line);margin:14px 0">`).join('')}
+  </div>
+  <div class="panel"><h3>Site settings</h3>
+    <label class="f-label">Announcement banner (blank = off)</label><input id="setAnn" type="text" value="${esc(SETTINGS.announcement||'')}">
+    <label class="f-label">Support email</label><input id="setSup" type="text" value="${esc(SETTINGS.supportEmail||'')}">
+    <button class="btn btn-pri btn-sm" style="margin-top:12px" onclick="adminSettings()">Save settings</button>
+    <p style="color:var(--mut);font-size:13.5px;margin-top:14px">Extension waitlist signups: <b style="color:#fff">${wl.waitlist.length}</b>${wl.waitlist.length?' — '+wl.waitlist.map(w=>esc(w.email)).join(', '):''}</p>
+  </div>`;
+}
+async function adminUserPlan(id,plan){await api('/api/admin/users/'+id,'POST',{plan});toast('Plan updated')}
+async function adminUserStatus(id,status){await api('/api/admin/users/'+id,'POST',{status});toast('User '+status);renderAdmin()}
+async function adminUserReset(id){await api('/api/admin/users/'+id,'POST',{resetUsage:true});toast('Usage reset');renderAdmin()}
+async function adminUserDelete(id){if(!confirm('Delete this account?'))return;await api('/api/admin/users/'+id,'DELETE');toast('Account deleted');renderAdmin()}
+async function adminOrder(id,status){await api('/api/admin/orders/'+id,'POST',{status});toast('Order '+status);renderAdmin()}
+async function adminPlan(id){await api('/api/admin/plans','POST',{id,price:Number($('#pl_price_'+id).value),reportsPerMonth:Number($('#pl_rep_'+id).value),thumbnailsPerMonth:Number($('#pl_th_'+id).value)});await loadPlans();toast('Plan saved — live now')}
+async function adminSettings(){const d=await api('/api/admin/settings','POST',{announcement:$('#setAnn').value,supportEmail:$('#setSup').value});SETTINGS=d.settings;toast('Settings saved')}
+
+/* ============ init ============ */
+loadPlans().then(()=>refreshMe()).catch(()=>{});
+</script>
+</body>
+</html>

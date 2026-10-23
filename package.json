@@ -1,0 +1,1 @@
+{"description":"PreRank AI — Research. Rank. Rise. AI YouTube research, SEO & thumbnail tool for creators.","engines":{"node":">=18"},"main":"server.js","name":"prerank-ai","private":true,"scripts":{"start":"node server.js"},"version":"1.0.0"}

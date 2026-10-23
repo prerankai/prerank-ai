@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: prerank-ai
+    env: node
+    plan: free
+    buildCommand: ""
+    startCommand: node server.js
+    envVars:
+      - key: ADMIN_EMAIL
+        value: owner@prerankai.com
+      - key: ADMIN_PASSWORD
+        sync: false
